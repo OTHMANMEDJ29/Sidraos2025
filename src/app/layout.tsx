@@ -1,22 +1,11 @@
 // ═══════════════════════════════════════════════════════════════════════════════
 // ROOT LAYOUT
-// This layout wraps all pages and provides fonts
-// The actual html/body tags are in [locale]/layout.tsx for proper i18n support
+// This layout only provides metadata - NO html/body tags
+// The html/body tags are in [locale]/layout.tsx for proper i18n support
 // ═══════════════════════════════════════════════════════════════════════════════
 
 import type { Metadata } from 'next';
-import { Geist, Geist_Mono } from 'next/font/google';
 import './globals.css';
-
-const geistSans = Geist({
-  variable: '--font-geist-sans',
-  subsets: ['latin'],
-});
-
-const geistMono = Geist_Mono({
-  variable: '--font-geist-mono',
-  subsets: ['latin'],
-});
 
 export const metadata: Metadata = {
   title: {
@@ -53,13 +42,6 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  return (
-    <html suppressHydrationWarning>
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {children}
-      </body>
-    </html>
-  );
+  // No html/body tags here - they're in [locale]/layout.tsx
+  return children;
 }

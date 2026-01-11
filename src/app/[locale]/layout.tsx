@@ -41,14 +41,20 @@ export default async function LocaleLayout({
   // Determine text direction
   const direction = getDirection(locale as Locale);
 
+  // Combine all font variables into a single className string
+  const fontVariables = `${ibmPlexArabic.variable} ${outfit.variable} ${playfairDisplay.variable}`;
+
   return (
     <html 
       lang={locale} 
       dir={direction} 
       suppressHydrationWarning
-      className={`${ibmPlexArabic.variable} ${outfit.variable} ${playfairDisplay.variable}`}
+      className={fontVariables}
     >
-      <body className="min-h-screen antialiased">
+      <body 
+        className="min-h-screen antialiased"
+        suppressHydrationWarning
+      >
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
