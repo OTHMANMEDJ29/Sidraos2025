@@ -3,14 +3,7 @@
    Luxury Minimalist • Apple meets Islamic Geometric Art
    ═══════════════════════════════════════════════════════════════════════════════ */
 
-/* Premium Arabic Font - IBM Plex Sans Arabic */
-@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&display=swap');
-
-/* Premium English Font - Outfit (modern geometric) */
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap');
-
-/* Display Font for Headlines - Playfair Display */
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&display=swap');
+/* Fonts are now loaded via next/font in layout.tsx for optimal performance */
 
 @import "tailwindcss";
 @import "tw-animate-css";

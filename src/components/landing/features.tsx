@@ -103,6 +103,7 @@ function FeatureCard({
       variants={itemVariants}
       whileHover={{ y: -8, transition: { duration: 0.3 } }}
       className="group relative"
+      style={{ willChange: 'transform' }}
     >
       {/* Card */}
       <div

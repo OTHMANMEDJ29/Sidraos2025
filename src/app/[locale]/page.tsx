@@ -4,8 +4,18 @@
 // ═══════════════════════════════════════════════════════════════════════════════
 
 import { setRequestLocale } from 'next-intl/server';
+import dynamic from 'next/dynamic';
 import { Navbar } from '@/components/layout';
-import { Hero, Features, Pricing, Footer } from '@/components/landing';
+import { Hero, Footer } from '@/components/landing';
+
+// Lazy load heavy sections for better FCP
+const Features = dynamic(() => import('@/components/landing').then(mod => ({ default: mod.Features })), {
+  loading: () => <div className="min-h-[600px] animate-pulse bg-muted/20" />,
+});
+
+const Pricing = dynamic(() => import('@/components/landing').then(mod => ({ default: mod.Pricing })), {
+  loading: () => <div className="min-h-[600px] animate-pulse bg-muted/20" />,
+});
 
 interface LandingPageProps {
   params: Promise<{ locale: string }>;

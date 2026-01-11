@@ -10,6 +10,7 @@ import { routing } from '@/i18n/routing';
 import { getDirection, type Locale } from '@/i18n/config';
 import { ThemeProvider } from '@/components/providers';
 import { Toaster } from '@/components/ui/sonner';
+import { ibmPlexArabic, outfit, playfairDisplay } from '@/app/fonts';
 
 interface LocaleLayoutProps {
   children: React.ReactNode;
@@ -41,7 +42,12 @@ export default async function LocaleLayout({
   const direction = getDirection(locale as Locale);
 
   return (
-    <html lang={locale} dir={direction} suppressHydrationWarning>
+    <html 
+      lang={locale} 
+      dir={direction} 
+      suppressHydrationWarning
+      className={`${ibmPlexArabic.variable} ${outfit.variable} ${playfairDisplay.variable}`}
+    >
       <body className="min-h-screen antialiased">
         <ThemeProvider
           attribute="class"

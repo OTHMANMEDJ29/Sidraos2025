@@ -17,13 +17,14 @@ import { WaitlistForm } from './waitlist-form';
 // Floating geometric shapes for the background
 function FloatingShapes(): React.ReactElement {
   return (
-    <div className="pointer-events-none absolute inset-0 overflow-hidden">
+    <div className="pointer-events-none absolute inset-0 overflow-hidden will-change-transform">
       {/* Large gradient orb - top right */}
       <motion.div
         initial={{ opacity: 0, scale: 0.8 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 1.5, ease: 'easeOut' }}
         className="absolute -end-32 -top-32 h-[600px] w-[600px] rounded-full bg-gradient-to-br from-emerald-500/20 via-emerald-500/5 to-transparent blur-3xl"
+        style={{ willChange: 'transform, opacity' }}
       />
       
       {/* Accent orb - bottom left */}
@@ -42,7 +43,7 @@ function FloatingShapes(): React.ReactElement {
         className="absolute start-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 h-[800px] w-[800px] rounded-full bg-gradient-to-br from-gold/5 to-transparent blur-3xl"
       />
 
-      {/* Floating geometric elements */}
+      {/* Floating geometric elements - optimized with will-change */}
       <motion.div
         animate={{ 
           y: [0, -30, 0],
@@ -50,6 +51,7 @@ function FloatingShapes(): React.ReactElement {
         }}
         transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
         className="absolute end-[15%] top-[20%] h-24 w-24"
+        style={{ willChange: 'transform' }}
       >
         <div className="h-full w-full rotate-45 rounded-2xl border border-emerald-500/20 bg-gradient-to-br from-emerald-500/10 to-transparent" />
       </motion.div>
@@ -61,6 +63,7 @@ function FloatingShapes(): React.ReactElement {
         }}
         transition={{ duration: 10, repeat: Infinity, ease: 'easeInOut', delay: 1 }}
         className="absolute start-[10%] top-[35%] h-16 w-16"
+        style={{ willChange: 'transform' }}
       >
         <div className="h-full w-full rounded-full border border-amber-500/20 bg-gradient-to-br from-amber-500/10 to-transparent" />
       </motion.div>
@@ -72,6 +75,7 @@ function FloatingShapes(): React.ReactElement {
         }}
         transition={{ duration: 12, repeat: Infinity, ease: 'easeInOut', delay: 2 }}
         className="absolute bottom-[20%] end-[25%] h-20 w-20"
+        style={{ willChange: 'transform' }}
       >
         <div className="flex h-full w-full items-center justify-center rounded-2xl border border-gold/30 bg-gradient-to-br from-gold/5 to-transparent backdrop-blur-sm">
           <Sparkles className="h-8 w-8 text-gold/40" />
@@ -86,6 +90,7 @@ function FloatingShapes(): React.ReactElement {
         }}
         transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut', delay: 0.5 }}
         className="absolute start-[20%] bottom-[30%] h-12 w-12"
+        style={{ willChange: 'transform' }}
       >
         <div className="h-full w-full rounded-xl border border-emerald-500/30 bg-gradient-to-t from-emerald-500/10 to-transparent" />
       </motion.div>

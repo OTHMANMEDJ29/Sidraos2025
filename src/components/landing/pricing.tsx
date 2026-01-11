@@ -158,6 +158,7 @@ export function Pricing() {
                   ? 'border-gold/50 bg-gradient-to-b from-gold/5 to-transparent shadow-xl shadow-gold/5'
                   : 'border-border bg-card hover:border-gold/30 hover:shadow-lg'
               )}
+              style={{ willChange: 'transform' }}
             >
               {/* Popular Badge */}
               {plan.popular && (
