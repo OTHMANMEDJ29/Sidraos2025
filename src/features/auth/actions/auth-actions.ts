@@ -22,7 +22,7 @@ export async function loginAction(formData: FormData): Promise<Result<{ redirect
   // Validate input
   const validated = loginSchema.safeParse(rawData);
   if (!validated.success) {
-    return { success: false, error: validated.error.errors[0].message };
+    return { success: false, error: validated.error.issues[0].message };
   }
 
   const supabase = await createClient();
@@ -55,7 +55,7 @@ export async function registerAction(formData: FormData): Promise<Result<{ redir
   // Validate input
   const validated = registerSchema.safeParse(rawData);
   if (!validated.success) {
-    return { success: false, error: validated.error.errors[0].message };
+    return { success: false, error: validated.error.issues[0].message };
   }
 
   const supabase = await createClient();
@@ -102,7 +102,7 @@ export async function forgotPasswordAction(formData: FormData): Promise<Result<{
   // Validate input
   const validated = forgotPasswordSchema.safeParse(rawData);
   if (!validated.success) {
-    return { success: false, error: validated.error.errors[0].message };
+    return { success: false, error: validated.error.issues[0].message };
   }
 
   const supabase = await createClient();
@@ -133,7 +133,7 @@ export async function resetPasswordAction(formData: FormData): Promise<Result<{ 
   // Validate input
   const validated = resetPasswordSchema.safeParse(rawData);
   if (!validated.success) {
-    return { success: false, error: validated.error.errors[0].message };
+    return { success: false, error: validated.error.issues[0].message };
   }
 
   const supabase = await createClient();
