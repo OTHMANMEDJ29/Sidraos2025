@@ -1,0 +1,866 @@
+# ═══════════════════════════════════════════════════════════════════════════════
+#                              SIDRAOS - PROJECT CONSTITUTION
+#                           A Sovereign Life Operating System
+# ═══════════════════════════════════════════════════════════════════════════════
+#
+# This file defines the absolute coding standards, architectural decisions,
+# and development principles for the SidraOS project. All AI assistants and
+# developers MUST adhere to these rules without exception.
+#
+# ═══════════════════════════════════════════════════════════════════════════════
+
+## ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+## 1. PROJECT IDENTITY
+## ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Project Name: SidraOS
+Project Type: Life Operating System (SaaS)
+Target Audience: High-end professional users
+Design Philosophy: Minimalist • Luxury • High-Performance
+
+Core Pillars:
+- Productivity (Tasks, Calendar, Habits)
+- Finance (Budgets, Transactions, Reports)
+- Second-Brain (Notes, Bookmarks, Journal)
+
+Supported Languages:
+- Arabic (ar) - Primary, RTL
+- English (en) - Secondary, LTR
+
+---
+
+## ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+## 2. TECH STACK (NON-NEGOTIABLE)
+## ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+| Category            | Technology                    | Version    |
+|---------------------|-------------------------------|------------|
+| Framework           | Next.js (App Router)          | 15.x       |
+| Language            | TypeScript (Strict Mode)      | 5.x        |
+| Styling             | Tailwind CSS                  | 4.x        |
+| Database & Auth     | Supabase                      | Latest     |
+| UI Components       | Shadcn/UI + Lucide React      | Latest     |
+| State Management    | Zustand                       | 5.x        |
+| Forms               | React Hook Form + Zod         | Latest     |
+| Internationalization| next-intl                     | Latest     |
+
+### Critical Dependencies to Install:
+```bash
+npm install @supabase/supabase-js @supabase/ssr zustand
+npm install react-hook-form @hookform/resolvers zod
+npm install next-intl
+npm install lucide-react
+npm install clsx tailwind-merge
+npx shadcn@latest init
+```
+
+---
+
+## ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+## 3. PROJECT ARCHITECTURE (FEATURE-BASED)
+## ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+```
+src/
+├── app/
+│   ├── [locale]/                    # i18n dynamic routing
+│   │   ├── (auth)/                  # Public auth routes
+│   │   │   ├── login/page.tsx
+│   │   │   ├── register/page.tsx
+│   │   │   └── layout.tsx
+│   │   ├── (dashboard)/             # Protected dashboard routes
+│   │   │   ├── overview/page.tsx
+│   │   │   ├── finance/
+│   │   │   ├── productivity/
+│   │   │   ├── second-brain/
+│   │   │   ├── settings/
+│   │   │   └── layout.tsx
+│   │   ├── layout.tsx
+│   │   └── page.tsx
+│   ├── api/                         # API routes
+│   └── globals.css
+│
+├── components/
+│   ├── ui/                          # Shadcn components
+│   ├── layout/                      # Header, Sidebar, Footer
+│   ├── forms/                       # Reusable form components
+│   └── shared/                      # Cross-feature components
+│
+├── features/                        # Feature modules
+│   ├── auth/
+│   │   ├── components/
+│   │   ├── hooks/
+│   │   ├── services/
+│   │   ├── stores/
+│   │   ├── actions/
+│   │   └── types/
+│   ├── finance/
+│   ├── productivity/
+│   └── second-brain/
+│
+├── lib/
+│   ├── supabase/                    # Supabase clients
+│   ├── utils/                       # Utility functions
+│   └── validations/                 # Zod schemas
+│
+├── i18n/
+│   ├── messages/
+│   │   ├── ar.json                  # Arabic translations
+│   │   └── en.json                  # English translations
+│   ├── config.ts
+│   └── request.ts
+│
+├── stores/                          # Global Zustand stores
+├── hooks/                           # Global custom hooks
+├── types/                           # Global TypeScript types
+└── config/                          # App configuration
+```
+
+---
+
+## ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+## 4. TYPESCRIPT STRICT STANDARDS
+## ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+### Compiler Requirements (tsconfig.json):
+```json
+{
+  "compilerOptions": {
+    "strict": true,
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true
+  }
+}
+```
+
+### Mandatory Type Rules:
+
+1. **ALWAYS define explicit return types**
+```typescript
+// ✅ CORRECT
+export async function getUser(id: string): Promise<User | null> {
+  return await db.user.findUnique({ where: { id } });
+}
+
+// ❌ FORBIDDEN
+export async function getUser(id) {
+  return await db.user.findUnique({ where: { id } });
+}
+```
+
+2. **NEVER use `any` - Use `unknown` with type guards**
+```typescript
+// ✅ CORRECT
+function processData(data: unknown): string {
+  if (typeof data === 'string') return data;
+  if (typeof data === 'object' && data !== null) return JSON.stringify(data);
+  return String(data);
+}
+
+// ❌ FORBIDDEN
+function processData(data: any): string {
+  return data.toString();
+}
+```
+
+3. **Use `interface` for objects, `type` for unions/intersections**
+```typescript
+// ✅ CORRECT
+interface User {
+  id: string;
+  email: string;
+  fullName: string;
+  locale: Locale;
+}
+
+type Locale = 'ar' | 'en';
+type ApiResponse<T> = { success: true; data: T } | { success: false; error: string };
+```
+
+4. **Infer types from Zod schemas for runtime validation**
+```typescript
+import { z } from 'zod';
+
+export const userSchema = z.object({
+  email: z.string().email(),
+  password: z.string().min(8),
+});
+
+export type UserFormData = z.infer<typeof userSchema>;
+```
+
+---
+
+## ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+## 5. REACT COMPONENT STANDARDS
+## ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+### 5.1 Server Components by Default
+
+ALL components are React Server Components (RSC) unless they explicitly need:
+- Event handlers (onClick, onChange, onSubmit)
+- Browser APIs (window, localStorage, navigator)
+- React hooks (useState, useEffect, useContext)
+- Third-party client-only libraries
+
+### 5.2 Client Component Rules
+
+```typescript
+// ✅ CORRECT - Client Component (when necessary)
+'use client';
+
+import { useState } from 'react';
+
+interface ToggleProps {
+  defaultValue?: boolean;
+  onToggle: (value: boolean) => void;
+}
+
+export function Toggle({ defaultValue = false, onToggle }: ToggleProps) {
+  const [active, setActive] = useState(defaultValue);
+  
+  const handleToggle = () => {
+    const newValue = !active;
+    setActive(newValue);
+    onToggle(newValue);
+  };
+
+  return (
+    <button onClick={handleToggle} aria-pressed={active}>
+      {active ? 'On' : 'Off'}
+    </button>
+  );
+}
+```
+
+### 5.3 Component Structure Order
+
+Every component file MUST follow this order:
+1. 'use client' directive (if needed)
+2. External imports
+3. Internal imports (@/)
+4. Type definitions
+5. Component definition
+6. Export statement
+
+```typescript
+'use client';
+
+import { useState } from 'react';
+import { Button } from '@/components/ui/button';
+import { cn } from '@/lib/utils';
+
+interface CardProps {
+  title: string;
+  children: React.ReactNode;
+  className?: string;
+}
+
+export function Card({ title, children, className }: CardProps) {
+  return (
+    <div className={cn('rounded-xl border p-6', className)}>
+      <h3 className="text-lg font-semibold">{title}</h3>
+      {children}
+    </div>
+  );
+}
+```
+
+### 5.4 Functional Components ONLY
+
+- **FORBIDDEN**: Class components
+- **REQUIRED**: Functional components with TypeScript interfaces
+- **REQUIRED**: Destructured props in function signature
+
+---
+
+## ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+## 6. ARABIC SUPPORT & RTL LAYOUT (CRITICAL)
+## ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+### 6.1 NEVER Hardcode Text - Use Translation Keys
+
+```typescript
+// ✅ CORRECT
+import { useTranslations } from 'next-intl';
+
+export function WelcomeMessage() {
+  const t = useTranslations('dashboard');
+  return <h1>{t('welcome')}</h1>;
+}
+
+// ❌ FORBIDDEN - Hardcoded text
+export function WelcomeMessage() {
+  return <h1>Welcome to Dashboard</h1>;
+}
+```
+
+### 6.2 Use Logical CSS Properties (Mandatory)
+
+ALWAYS use CSS logical properties for automatic RTL/LTR support:
+
+| ❌ Physical (FORBIDDEN) | ✅ Logical (REQUIRED)    |
+|------------------------|--------------------------|
+| margin-left            | margin-inline-start      |
+| margin-right           | margin-inline-end        |
+| padding-left           | padding-inline-start     |
+| padding-right          | padding-inline-end       |
+| left                   | inset-inline-start       |
+| right                  | inset-inline-end         |
+| text-align: left       | text-align: start        |
+| text-align: right      | text-align: end          |
+| border-left            | border-inline-start      |
+| border-right           | border-inline-end        |
+
+### 6.3 Tailwind RTL Classes (Mandatory)
+
+Use Tailwind's logical utilities:
+
+| ❌ Physical (FORBIDDEN) | ✅ Logical (REQUIRED) |
+|------------------------|----------------------|
+| ml-4                   | ms-4                 |
+| mr-4                   | me-4                 |
+| pl-4                   | ps-4                 |
+| pr-4                   | pe-4                 |
+| left-0                 | start-0              |
+| right-0                | end-0                |
+| text-left              | text-start           |
+| text-right             | text-end             |
+| rounded-l-lg           | rounded-s-lg         |
+| rounded-r-lg           | rounded-e-lg         |
+| border-l               | border-s             |
+| border-r               | border-e             |
+
+```html
+<!-- ✅ CORRECT -->
+<div class="ms-4 me-2 ps-6 pe-4 text-start border-s-2">
+  Content adapts to RTL/LTR automatically
+</div>
+
+<!-- ❌ FORBIDDEN -->
+<div class="ml-4 mr-2 pl-6 pr-4 text-left border-l-2">
+  This breaks in Arabic
+</div>
+```
+
+### 6.4 Directional Icon Mirroring
+
+Icons with direction (arrows, chevrons) MUST flip in RTL:
+
+```typescript
+import { ChevronRight, ArrowLeft, ArrowRight } from 'lucide-react';
+
+// ✅ CORRECT - Icons flip in RTL
+<ChevronRight className="rtl:rotate-180" />
+<ArrowLeft className="rtl:rotate-180" />
+<ArrowRight className="rtl:rotate-180" />
+
+// For "back" navigation (points to start)
+<ArrowLeft className="rtl:rotate-180" /> // Points left in LTR, right in RTL
+```
+
+### 6.5 Flex Direction Handling
+
+```html
+<!-- ✅ CORRECT - Row reverses automatically in RTL -->
+<div class="flex flex-row">
+  <!-- Items flow naturally based on locale -->
+</div>
+
+<!-- For explicit control when needed -->
+<div class="flex ltr:flex-row rtl:flex-row-reverse">
+  <!-- Explicit direction control -->
+</div>
+```
+
+### 6.6 Number & Currency Formatting
+
+ALWAYS use locale-aware formatting:
+
+```typescript
+// ✅ CORRECT
+const formatCurrency = (amount: number, locale: string): string => {
+  return new Intl.NumberFormat(locale, {
+    style: 'currency',
+    currency: locale === 'ar' ? 'SAR' : 'USD',
+  }).format(amount);
+};
+
+const formatDate = (date: Date, locale: string): string => {
+  return new Intl.DateTimeFormat(locale, {
+    dateStyle: 'long',
+  }).format(date);
+};
+
+// ❌ FORBIDDEN
+const formatCurrency = (amount: number): string => {
+  return `$${amount.toFixed(2)}`;
+};
+```
+
+### 6.7 Font Configuration
+
+Include Arabic-compatible fonts:
+
+```css
+/* globals.css */
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --font-sans: 'Inter', 'IBM Plex Sans Arabic', sans-serif;
+}
+```
+
+### 6.8 HTML Direction Attribute
+
+Root layout MUST set direction dynamically:
+
+```typescript
+// app/[locale]/layout.tsx
+export default function LocaleLayout({
+  children,
+  params: { locale }
+}: {
+  children: React.ReactNode;
+  params: { locale: string };
+}) {
+  const direction = locale === 'ar' ? 'rtl' : 'ltr';
+  
+  return (
+    <html lang={locale} dir={direction}>
+      <body>{children}</body>
+    </html>
+  );
+}
+```
+
+---
+
+## ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+## 7. ERROR HANDLING STANDARDS
+## ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+### 7.1 Result Pattern for Server Actions
+
+```typescript
+// ✅ CORRECT - Result pattern
+type Result<T> = 
+  | { success: true; data: T }
+  | { success: false; error: string };
+
+export async function createTransaction(
+  input: TransactionInput
+): Promise<Result<Transaction>> {
+  try {
+    // Validate input
+    const validated = transactionSchema.safeParse(input);
+    if (!validated.success) {
+      return { success: false, error: 'Invalid input data' };
+    }
+    
+    // Perform operation
+    const transaction = await db.transaction.create(validated.data);
+    return { success: true, data: transaction };
+    
+  } catch (error) {
+    console.error('[createTransaction]', error);
+    return { success: false, error: 'Failed to create transaction' };
+  }
+}
+```
+
+### 7.2 Error Boundaries
+
+Each feature section MUST have error boundaries:
+
+```typescript
+// app/[locale]/(dashboard)/finance/error.tsx
+'use client';
+
+import { useTranslations } from 'next-intl';
+import { Button } from '@/components/ui/button';
+
+export default function FinanceError({
+  error,
+  reset,
+}: {
+  error: Error & { digest?: string };
+  reset: () => void;
+}) {
+  const t = useTranslations('errors');
+  
+  return (
+    <div className="flex flex-col items-center justify-center gap-4 p-8">
+      <h2 className="text-xl font-semibold">{t('somethingWentWrong')}</h2>
+      <Button onClick={reset}>{t('tryAgain')}</Button>
+    </div>
+  );
+}
+```
+
+### 7.3 Loading States
+
+Every page MUST have a loading state:
+
+```typescript
+// app/[locale]/(dashboard)/finance/loading.tsx
+import { Skeleton } from '@/components/ui/skeleton';
+
+export default function FinanceLoading() {
+  return (
+    <div className="space-y-4 p-6">
+      <Skeleton className="h-8 w-48" />
+      <div className="grid gap-4 md:grid-cols-3">
+        <Skeleton className="h-32" />
+        <Skeleton className="h-32" />
+        <Skeleton className="h-32" />
+      </div>
+    </div>
+  );
+}
+```
+
+---
+
+## ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+## 8. STATE MANAGEMENT (ZUSTAND)
+## ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+### Store Structure Pattern:
+
+```typescript
+// src/features/auth/stores/auth-store.ts
+import { create } from 'zustand';
+import { persist, createJSONStorage } from 'zustand/middleware';
+
+interface User {
+  id: string;
+  email: string;
+  fullName: string;
+}
+
+interface AuthState {
+  user: User | null;
+  isAuthenticated: boolean;
+  isLoading: boolean;
+}
+
+interface AuthActions {
+  setUser: (user: User | null) => void;
+  setLoading: (loading: boolean) => void;
+  logout: () => void;
+}
+
+type AuthStore = AuthState & AuthActions;
+
+export const useAuthStore = create<AuthStore>()(
+  persist(
+    (set) => ({
+      // State
+      user: null,
+      isAuthenticated: false,
+      isLoading: true,
+      
+      // Actions
+      setUser: (user) => set({ 
+        user, 
+        isAuthenticated: !!user,
+        isLoading: false 
+      }),
+      setLoading: (isLoading) => set({ isLoading }),
+      logout: () => set({ 
+        user: null, 
+        isAuthenticated: false,
+        isLoading: false 
+      }),
+    }),
+    {
+      name: 'sidra-auth',
+      storage: createJSONStorage(() => localStorage),
+      partialize: (state) => ({ user: state.user }),
+    }
+  )
+);
+```
+
+### Rules:
+- One store per feature domain
+- Keep stores focused and minimal
+- Use `persist` middleware for data that should survive refresh
+- Access stores ONLY in client components
+
+---
+
+## ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+## 9. FORM HANDLING (REACT HOOK FORM + ZOD)
+## ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+### Schema-First Approach:
+
+```typescript
+// 1. Define schema in lib/validations/
+import { z } from 'zod';
+
+export const loginSchema = z.object({
+  email: z.string().email('البريد الإلكتروني غير صالح'),
+  password: z.string().min(8, 'كلمة المرور يجب أن تكون 8 أحرف على الأقل'),
+});
+
+export type LoginFormData = z.infer<typeof loginSchema>;
+
+// 2. Use in component
+'use client';
+
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { loginSchema, type LoginFormData } from '@/lib/validations/auth';
+
+export function LoginForm() {
+  const form = useForm<LoginFormData>({
+    resolver: zodResolver(loginSchema),
+    defaultValues: {
+      email: '',
+      password: '',
+    },
+  });
+
+  const onSubmit = async (data: LoginFormData) => {
+    // Handle submission
+  };
+
+  return (
+    <form onSubmit={form.handleSubmit(onSubmit)}>
+      {/* Form fields */}
+    </form>
+  );
+}
+```
+
+---
+
+## ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+## 10. SUPABASE INTEGRATION
+## ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+### Browser Client:
+```typescript
+// src/lib/supabase/client.ts
+import { createBrowserClient } from '@supabase/ssr';
+
+export function createClient() {
+  return createBrowserClient(
+    process.env.NEXT_PUBLIC_SUPABASE_URL!,
+    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
+  );
+}
+```
+
+### Server Client:
+```typescript
+// src/lib/supabase/server.ts
+import { createServerClient } from '@supabase/ssr';
+import { cookies } from 'next/headers';
+
+export async function createClient() {
+  const cookieStore = await cookies();
+
+  return createServerClient(
+    process.env.NEXT_PUBLIC_SUPABASE_URL!,
+    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
+    {
+      cookies: {
+        getAll() {
+          return cookieStore.getAll();
+        },
+        setAll(cookiesToSet) {
+          try {
+            cookiesToSet.forEach(({ name, value, options }) =>
+              cookieStore.set(name, value, options)
+            );
+          } catch {
+            // Handle server component cookie setting
+          }
+        },
+      },
+    }
+  );
+}
+```
+
+---
+
+## ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+## 11. NAMING CONVENTIONS
+## ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+| Element             | Convention           | Example                        |
+|---------------------|----------------------|--------------------------------|
+| Files               | kebab-case           | `user-profile.tsx`             |
+| Components          | PascalCase           | `UserProfile`                  |
+| Hooks               | camelCase + use      | `useAuth`, `useTransactions`   |
+| Stores              | camelCase + Store    | `authStore`, `financeStore`    |
+| Types/Interfaces    | PascalCase           | `User`, `Transaction`          |
+| Constants           | SCREAMING_SNAKE_CASE | `MAX_FILE_SIZE`                |
+| Server Actions      | camelCase + Action   | `createTransactionAction`      |
+| API Routes          | kebab-case           | `/api/auth/callback`           |
+
+---
+
+## ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+## 12. DESIGN SYSTEM
+## ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+### Visual Identity:
+- **Primary**: Deep blacks (#0A0A0A), Pure whites (#FAFAFA)
+- **Accent**: Gold (#C9A227) for premium elements
+- **Typography**: Clean, professional, excellent Arabic support
+- **Spacing**: Generous whitespace, breathing room
+- **Animations**: Subtle, purposeful, 200-300ms transitions
+
+### Tailwind Class Utility:
+```typescript
+// src/lib/utils.ts
+import { clsx, type ClassValue } from 'clsx';
+import { twMerge } from 'tailwind-merge';
+
+export function cn(...inputs: ClassValue[]): string {
+  return twMerge(clsx(inputs));
+}
+```
+
+### Component Styling Pattern:
+```typescript
+import { cn } from '@/lib/utils';
+
+interface ButtonProps {
+  variant?: 'default' | 'outline' | 'ghost';
+  className?: string;
+  children: React.ReactNode;
+}
+
+export function Button({ variant = 'default', className, children }: ButtonProps) {
+  return (
+    <button
+      className={cn(
+        'inline-flex items-center justify-center rounded-lg px-4 py-2',
+        'text-sm font-medium transition-colors duration-200',
+        'focus-visible:outline-none focus-visible:ring-2',
+        {
+          'bg-primary text-primary-foreground hover:bg-primary/90': variant === 'default',
+          'border border-input hover:bg-accent': variant === 'outline',
+          'hover:bg-accent hover:text-accent-foreground': variant === 'ghost',
+        },
+        className
+      )}
+    >
+      {children}
+    </button>
+  );
+}
+```
+
+---
+
+## ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+## 13. SECURITY REQUIREMENTS
+## ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+1. **Environment Variables**:
+   - NEVER expose SUPABASE_SERVICE_ROLE_KEY to client
+   - Use NEXT_PUBLIC_ prefix ONLY for public variables
+
+2. **Input Validation**:
+   - Validate ALL inputs server-side with Zod
+   - Never trust client-side validation alone
+
+3. **Database Security**:
+   - Enable Row Level Security (RLS) on all tables
+   - Use Supabase policies for access control
+
+4. **Authentication**:
+   - Use Supabase Auth for all authentication
+   - Implement proper session management
+
+---
+
+## ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+## 14. GIT CONVENTIONS
+## ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+### Commit Message Format:
+```
+type(scope): description
+
+feat(finance): add transaction categorization
+fix(auth): resolve session persistence issue
+docs(readme): update installation guide
+style(ui): improve button hover states
+refactor(dashboard): extract chart components
+chore(deps): update dependencies
+```
+
+### Branch Naming:
+```
+feature/finance-dashboard
+fix/auth-session-bug
+refactor/component-structure
+hotfix/critical-security-patch
+```
+
+---
+
+## ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+## 15. AI ASSISTANT DIRECTIVES
+## ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+When generating code for SidraOS, you MUST:
+
+1. ✅ Use the established folder structure
+2. ✅ Default to Server Components (add 'use client' only when necessary)
+3. ✅ Include complete TypeScript types with explicit return types
+4. ✅ Use translation keys for ALL user-facing text
+5. ✅ Apply RTL-compatible CSS (ms-, me-, ps-, pe-, start, end)
+6. ✅ Follow naming conventions strictly
+7. ✅ Implement proper error handling with Result pattern
+8. ✅ Keep components focused and composable
+9. ✅ Use Shadcn/UI as the component foundation
+10. ✅ Test mentally for both Arabic and English layouts
+
+You MUST NOT:
+
+1. ❌ Use `any` type
+2. ❌ Hardcode text strings
+3. ❌ Use physical CSS properties (ml, mr, pl, pr, left, right)
+4. ❌ Create class components
+5. ❌ Skip error boundaries or loading states
+6. ❌ Expose sensitive environment variables
+7. ❌ Mix Server and Client code in the same file
+8. ❌ Create components without proper accessibility
+
+---
+
+## ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+## 16. CODE REVIEW CHECKLIST
+## ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Before committing any code:
+
+- [ ] TypeScript strict mode passes with zero errors
+- [ ] All text uses translation keys (no hardcoded strings)
+- [ ] RTL layout verified (test with Arabic locale)
+- [ ] Server Components used where appropriate
+- [ ] Client components are minimal and necessary
+- [ ] Error handling implemented
+- [ ] Loading states provided
+- [ ] Accessibility attributes included (aria-*, role)
+- [ ] Mobile responsive design verified
+- [ ] Code follows naming conventions
+
+---
+
+*SidraOS Constitution v1.0.0 | January 2026*
+*This document is the law of the codebase. Violations are not tolerated.*

@@ -1,0 +1,334 @@
+{
+  "common": {
+    "loading": "Loading...",
+    "save": "Save",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "edit": "Edit",
+    "create": "Create",
+    "search": "Search",
+    "filter": "Filter",
+    "sort": "Sort",
+    "close": "Close",
+    "confirm": "Confirm",
+    "back": "Back",
+    "next": "Next",
+    "previous": "Previous",
+    "submit": "Submit",
+    "reset": "Reset",
+    "clear": "Clear",
+    "yes": "Yes",
+    "no": "No",
+    "or": "or",
+    "and": "and",
+    "allRightsReserved": "All rights reserved",
+    "systemOperational": "All systems operational"
+  },
+  "auth": {
+    "login": "Sign In",
+    "register": "Create Account",
+    "logout": "Sign Out",
+    "email": "Email",
+    "password": "Password",
+    "confirmPassword": "Confirm Password",
+    "fullName": "Full Name",
+    "forgotPassword": "Forgot password?",
+    "resetPassword": "Reset Password",
+    "noAccount": "Don't have an account?",
+    "hasAccount": "Already have an account?",
+    "signInWith": "Sign in with {provider}",
+    "orContinueWith": "Or continue with"
+  },
+  "nav": {
+    "main": "Main",
+    "overview": "Overview",
+    "productivity": "Productivity",
+    "tasks": "Tasks",
+    "calendar": "Calendar",
+    "habits": "Habits",
+    "finance": "Finance",
+    "transactions": "Transactions",
+    "budgets": "Budgets",
+    "reports": "Reports",
+    "secondBrain": "Second Brain",
+    "notes": "Notes",
+    "bookmarks": "Bookmarks",
+    "journal": "Journal",
+    "system": "System",
+    "settings": "Settings",
+    "features": "Features",
+    "pricing": "Pricing",
+    "about": "About",
+    "blog": "Blog",
+    "contact": "Contact"
+  },
+  "dashboard": {
+    "welcome": "Welcome back",
+    "welcomeUser": "Welcome back, {name}",
+    "subtitle": "Here's what's happening with your life today.",
+    "overview": "Overview",
+    "quickActions": "Quick Actions",
+    "recentActivity": "Recent Activity",
+    "upcomingTasks": "Upcoming Tasks",
+    "todaySchedule": "Today's Schedule",
+    "financialSummary": "Financial Summary",
+    "focusState": "Focus State",
+    "deepWork": "Deep Work Mode",
+    "prayerTimes": "Prayer Times",
+    "nextPrayer": "Next Prayer",
+    "financials": "Financials",
+    "thisMonth": "This Month",
+    "income": "Income",
+    "expenses": "Expenses",
+    "totalBalance": "Total Balance",
+    "fromLastMonth": "from last month",
+    "timeRemaining": "{hours}h {mins}m",
+    "goals": "Goals",
+    "tasks": "Tasks",
+    "events": "Events",
+    "notes": "Notes",
+    "months": {
+      "jan": "Jan",
+      "feb": "Feb",
+      "mar": "Mar",
+      "apr": "Apr",
+      "may": "May",
+      "jun": "Jun",
+      "jul": "Jul",
+      "aug": "Aug",
+      "sep": "Sep",
+      "oct": "Oct",
+      "nov": "Nov",
+      "dec": "Dec"
+    }
+  },
+  "settings": {
+    "title": "Settings",
+    "profile": "Profile",
+    "preferences": "Preferences",
+    "appearance": "Appearance",
+    "language": "Language",
+    "theme": "Theme",
+    "themeLight": "Light",
+    "themeDark": "Dark",
+    "themeSystem": "System",
+    "notifications": "Notifications",
+    "security": "Security",
+    "billing": "Billing"
+  },
+  "errors": {
+    "somethingWentWrong": "Something went wrong",
+    "tryAgain": "Try again",
+    "notFound": "Page not found",
+    "unauthorized": "Unauthorized",
+    "forbidden": "Forbidden",
+    "serverError": "Server error"
+  },
+  "landing": {
+    "hero": {
+      "title": "Your Life, Orchestrated",
+      "subtitle": "A sovereign operating system for productivity, finance, and knowledge. Built for those who demand excellence.",
+      "cta": "Get Started",
+      "waitlist": {
+        "placeholder": "Enter your email",
+        "button": "Join Waitlist",
+        "success": "You're on the list!",
+        "description": "Join 2,000+ professionals waiting for early access"
+      }
+    },
+    "features": {
+      "title": "Everything you need",
+      "subtitle": "One platform. Complete control. Unmatched clarity.",
+      "productivity": {
+        "title": "Productivity",
+        "description": "Tasks, calendar, and habits in perfect harmony."
+      },
+      "finance": {
+        "title": "Finance",
+        "description": "Track expenses, budgets, and investments."
+      },
+      "secondBrain": {
+        "title": "Second Brain",
+        "description": "Notes, bookmarks, and journal for your thoughts."
+      }
+    },
+    "social": {
+      "twitter": "Twitter",
+      "github": "GitHub",
+      "linkedin": "LinkedIn"
+    }
+  },
+  "pricing": {
+    "title": "Simple, Transparent Pricing",
+    "subtitle": "Choose the plan that fits your journey",
+    "monthly": "Monthly",
+    "yearly": "Yearly",
+    "savePercent": "Save {percent}%",
+    "perMonth": "/month",
+    "perYear": "/year",
+    "billedAnnually": "billed annually",
+    "mostPopular": "Most Popular",
+    "getStarted": "Get Started",
+    "currentPlan": "Current Plan",
+    "contactSales": "Contact Sales",
+    "free": {
+      "name": "Free",
+      "description": "Perfect for getting started",
+      "price": "0",
+      "features": [
+        "Up to 50 tasks",
+        "Basic habit tracking",
+        "5 notes",
+        "Community support"
+      ]
+    },
+    "pro": {
+      "name": "Pro",
+      "description": "For serious productivity",
+      "price": "12",
+      "yearlyPrice": "99",
+      "features": [
+        "Unlimited tasks & habits",
+        "Unlimited notes & bookmarks",
+        "Full financial tracking",
+        "Prayer time notifications",
+        "Priority support",
+        "Custom themes",
+        "API access"
+      ]
+    },
+    "enterprise": {
+      "name": "Enterprise",
+      "description": "For teams & organizations",
+      "price": "Custom",
+      "features": [
+        "Everything in Pro",
+        "Team collaboration",
+        "Admin dashboard",
+        "SSO integration",
+        "Dedicated account manager",
+        "Custom integrations",
+        "SLA guarantee"
+      ]
+    }
+  },
+  "legal": {
+    "termsOfService": "Terms of Service",
+    "privacyPolicy": "Privacy Policy",
+    "refundPolicy": "Refund Policy",
+    "cookiePolicy": "Cookie Policy",
+    "lastUpdated": "Last updated: {date}",
+    "terms": {
+      "title": "Terms of Service",
+      "intro": "Welcome to SidraOS. By accessing or using our service, you agree to be bound by these Terms of Service.",
+      "sections": {
+        "acceptance": {
+          "title": "1. Acceptance of Terms",
+          "content": "By accessing and using SidraOS, you accept and agree to be bound by the terms and provision of this agreement. If you do not agree to these terms, please do not use our service."
+        },
+        "description": {
+          "title": "2. Description of Service",
+          "content": "SidraOS is a life operating system providing productivity, finance management, and knowledge organization tools. We reserve the right to modify, suspend, or discontinue any aspect of the service at any time."
+        },
+        "accounts": {
+          "title": "3. User Accounts",
+          "content": "You are responsible for maintaining the confidentiality of your account credentials. You agree to notify us immediately of any unauthorized use of your account. We reserve the right to terminate accounts that violate these terms."
+        },
+        "payment": {
+          "title": "4. Payment Terms",
+          "content": "Paid subscriptions are billed in advance on a monthly or annual basis. All fees are non-refundable except as expressly stated in our Refund Policy. We reserve the right to change our pricing with 30 days notice."
+        },
+        "conduct": {
+          "title": "5. User Conduct",
+          "content": "You agree not to use SidraOS for any unlawful purpose or in violation of any applicable laws. You may not attempt to gain unauthorized access to any portion of the service or any other systems connected to it."
+        },
+        "intellectual": {
+          "title": "6. Intellectual Property",
+          "content": "All content, features, and functionality of SidraOS are owned by us and are protected by international copyright, trademark, and other intellectual property laws."
+        },
+        "limitation": {
+          "title": "7. Limitation of Liability",
+          "content": "SidraOS shall not be liable for any indirect, incidental, special, consequential, or punitive damages resulting from your use or inability to use the service."
+        },
+        "changes": {
+          "title": "8. Changes to Terms",
+          "content": "We reserve the right to modify these terms at any time. We will notify users of any material changes via email or through the service. Continued use after changes constitutes acceptance."
+        }
+      }
+    },
+    "privacy": {
+      "title": "Privacy Policy",
+      "intro": "Your privacy is important to us. This Privacy Policy explains how we collect, use, disclose, and safeguard your information.",
+      "sections": {
+        "collection": {
+          "title": "1. Information We Collect",
+          "content": "We collect information you provide directly (name, email, payment info) and information collected automatically (usage data, device info, cookies)."
+        },
+        "use": {
+          "title": "2. How We Use Your Information",
+          "content": "We use your information to provide and improve our services, process transactions, send communications, and ensure security of your account."
+        },
+        "sharing": {
+          "title": "3. Information Sharing",
+          "content": "We do not sell your personal information. We may share data with service providers who assist in operations, or when required by law."
+        },
+        "security": {
+          "title": "4. Data Security",
+          "content": "We implement industry-standard security measures to protect your data. However, no method of transmission over the Internet is 100% secure."
+        },
+        "retention": {
+          "title": "5. Data Retention",
+          "content": "We retain your information for as long as your account is active or as needed to provide services. You may request deletion of your account at any time."
+        },
+        "rights": {
+          "title": "6. Your Rights",
+          "content": "You have the right to access, correct, or delete your personal information. You may also opt out of marketing communications at any time."
+        },
+        "cookies": {
+          "title": "7. Cookies",
+          "content": "We use cookies and similar technologies to enhance your experience, analyze usage, and deliver personalized content."
+        },
+        "contact": {
+          "title": "8. Contact Us",
+          "content": "If you have questions about this Privacy Policy, please contact us at privacy@sidraos.com."
+        }
+      }
+    },
+    "refund": {
+      "title": "Refund Policy",
+      "intro": "We want you to be satisfied with SidraOS. This policy outlines our refund terms.",
+      "sections": {
+        "eligibility": {
+          "title": "1. Refund Eligibility",
+          "content": "You may request a full refund within 14 days of your initial purchase. Refunds are not available for renewals or after the 14-day period."
+        },
+        "process": {
+          "title": "2. Refund Process",
+          "content": "To request a refund, contact our support team at support@sidraos.com with your account email and reason for refund. Refunds are processed within 5-10 business days."
+        },
+        "exceptions": {
+          "title": "3. Exceptions",
+          "content": "Refunds may be denied if there is evidence of abuse, fraud, or violation of our Terms of Service. Partial refunds are not available."
+        },
+        "subscription": {
+          "title": "4. Subscription Cancellation",
+          "content": "You may cancel your subscription at any time. Access continues until the end of your billing period. No prorated refunds for partial months."
+        },
+        "contact": {
+          "title": "5. Contact",
+          "content": "For refund requests or questions, email support@sidraos.com or use the contact form on our website."
+        }
+      }
+    }
+  },
+  "footer": {
+    "product": "Product",
+    "company": "Company",
+    "legal": "Legal",
+    "resources": "Resources",
+    "support": "Support",
+    "documentation": "Documentation",
+    "guides": "Guides",
+    "community": "Community"
+  }
+}
