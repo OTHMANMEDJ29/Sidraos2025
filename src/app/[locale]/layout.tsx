@@ -8,8 +8,9 @@ import { getMessages, setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import { routing } from '@/i18n/routing';
 import { getDirection, type Locale } from '@/i18n/config';
-import { ThemeProvider } from '@/components/providers';
+import { ThemeProvider, ConsoleProvider } from '@/components/providers';
 import { Toaster } from '@/components/ui/sonner';
+import { ScrollProgress } from '@/components/shared';
 import { ibmPlexArabic, outfit, playfairDisplay } from '@/app/fonts';
 
 interface LocaleLayoutProps {
@@ -61,10 +62,13 @@ export default async function LocaleLayout({
           enableSystem
           disableTransitionOnChange={false}
         >
-          <NextIntlClientProvider messages={messages}>
-            {children}
-            <Toaster position={direction === 'rtl' ? 'top-left' : 'top-right'} />
-          </NextIntlClientProvider>
+          <ConsoleProvider>
+            <NextIntlClientProvider messages={messages}>
+              <ScrollProgress />
+              {children}
+              <Toaster position={direction === 'rtl' ? 'top-left' : 'top-right'} />
+            </NextIntlClientProvider>
+          </ConsoleProvider>
         </ThemeProvider>
       </body>
     </html>

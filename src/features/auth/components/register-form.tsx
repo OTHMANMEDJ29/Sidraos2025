@@ -162,7 +162,7 @@ export function RegisterForm() {
             {tCommon('loading')}
           </>
         ) : (
-          t('register')
+          t('createAccountCta')
         )}
       </Button>
 

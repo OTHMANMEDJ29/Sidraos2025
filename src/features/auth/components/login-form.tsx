@@ -129,7 +129,7 @@ export function LoginForm() {
             {tCommon('loading')}
           </>
         ) : (
-          t('login')
+          t('loginCta')
         )}
       </Button>
 

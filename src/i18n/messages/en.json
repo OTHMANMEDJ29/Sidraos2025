@@ -26,7 +26,7 @@
   },
   "auth": {
     "login": "Sign In",
-    "register": "Create Account",
+    "register": "Start Free →",
     "logout": "Sign Out",
     "email": "Email",
     "password": "Password",
@@ -37,7 +37,9 @@
     "noAccount": "Don't have an account?",
     "hasAccount": "Already have an account?",
     "signInWith": "Sign in with {provider}",
-    "orContinueWith": "Or continue with"
+    "orContinueWith": "Or continue with",
+    "createAccountCta": "Create My Free Account",
+    "loginCta": "Access My Dashboard"
   },
   "nav": {
     "main": "Main",
@@ -131,7 +133,7 @@
       "cta": "Get Started",
       "waitlist": {
         "placeholder": "Enter your email",
-        "button": "Join Waitlist",
+        "button": "Get Early Access",
         "success": "You're on the list!",
         "description": "Join 2,000+ professionals waiting for early access"
       }
@@ -168,7 +170,7 @@
     "perYear": "/year",
     "billedAnnually": "billed annually",
     "mostPopular": "Most Popular",
-    "getStarted": "Get Started",
+    "getStarted": "Start My Free Trial",
     "currentPlan": "Current Plan",
     "contactSales": "Contact Sales",
     "free": {

@@ -26,7 +26,7 @@
   },
   "auth": {
     "login": "تسجيل الدخول",
-    "register": "إنشاء حساب",
+    "register": "ابدأ مجاناً ←",
     "logout": "تسجيل الخروج",
     "email": "البريد الإلكتروني",
     "password": "كلمة المرور",
@@ -37,7 +37,9 @@
     "noAccount": "ليس لديك حساب؟",
     "hasAccount": "لديك حساب بالفعل؟",
     "signInWith": "تسجيل الدخول باستخدام {provider}",
-    "orContinueWith": "أو تابع باستخدام"
+    "orContinueWith": "أو تابع باستخدام",
+    "createAccountCta": "أنشئ حسابي المجاني",
+    "loginCta": "ادخل للوحة التحكم"
   },
   "nav": {
     "main": "الرئيسية",
@@ -131,7 +133,7 @@
       "cta": "ابدأ الآن",
       "waitlist": {
         "placeholder": "أدخل بريدك الإلكتروني",
-        "button": "انضم لقائمة الانتظار",
+        "button": "احصل على وصول مبكر",
         "success": "أنت في القائمة!",
         "description": "انضم لأكثر من 2000 محترف ينتظرون الوصول المبكر"
       }
@@ -168,7 +170,7 @@
     "perYear": "/سنة",
     "billedAnnually": "يُحاسب سنوياً",
     "mostPopular": "الأكثر شعبية",
-    "getStarted": "ابدأ الآن",
+    "getStarted": "ابدأ تجربتي المجانية",
     "currentPlan": "الخطة الحالية",
     "contactSales": "تواصل مع المبيعات",
     "free": {
