@@ -48,12 +48,12 @@ export async function updateSession(request: NextRequest) {
   // supabase.auth.getUser(). A simple mistake could make your application
   // vulnerable to security issues.
 
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
+  // Refresh the session to keep it active
+  await supabase.auth.getUser();
 
   // You can add protected route logic here if needed
   // Example:
+  // const { data: { user } } = await supabase.auth.getUser();
   // if (!user && request.nextUrl.pathname.startsWith('/dashboard')) {
   //   const url = request.nextUrl.clone();
   //   url.pathname = '/login';

@@ -4,8 +4,7 @@
 // ═══════════════════════════════════════════════════════════════════════════════
 
 import { Link } from '@/i18n/routing';
-import { dashboardNavigation } from '@/config/navigation';
-import { getTranslations, setRequestLocale } from 'next-intl/server';
+import { setRequestLocale } from 'next-intl/server';
 import { Menu } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { DashboardSidebar } from '@/components/layout/dashboard-sidebar';
@@ -22,8 +21,6 @@ export default async function DashboardLayout({
 }: DashboardLayoutProps) {
   const { locale } = await params;
   setRequestLocale(locale);
-
-  const t = await getTranslations('nav');
 
   return (
     <div className="flex min-h-screen">

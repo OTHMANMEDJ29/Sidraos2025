@@ -5,7 +5,7 @@
 
 'use client';
 
-import { useEffect, useCallback } from 'react';
+import { useEffect, useCallback, useMemo } from 'react';
 import { useRouter } from 'next/navigation';
 import { useTheme } from 'next-themes';
 
@@ -30,7 +30,7 @@ export function useKeyboardShortcuts(
   const router = useRouter();
   const { setTheme, theme } = useTheme();
 
-  const shortcuts: ShortcutAction[] = [
+  const shortcuts: ShortcutAction[] = useMemo(() => [
     {
       key: 'k',
       ctrl: true,
@@ -63,7 +63,7 @@ export function useKeyboardShortcuts(
         searchInput?.focus();
       },
     },
-  ];
+  ], [router, setTheme, theme]);
 
   const handleKeyDown = useCallback(
     (event: KeyboardEvent) => {

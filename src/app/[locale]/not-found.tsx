@@ -5,7 +5,7 @@
 
 'use client';
 
-import { useTranslations, useLocale } from 'next-intl';
+import { useLocale } from 'next-intl';
 import { motion } from 'framer-motion';
 import { Link } from '@/i18n/routing';
 import { Button } from '@/components/ui/button';
@@ -99,7 +99,6 @@ function AnimatedNumber({ digit, delay }: { digit: string; delay: number }): Rea
 }
 
 export default function NotFound(): React.ReactElement {
-  const t = useTranslations('errors');
   const locale = useLocale();
   const isRTL = locale === 'ar';
 
@@ -187,7 +186,7 @@ export default function NotFound(): React.ReactElement {
           transition={{ delay: 1, duration: 0.5 }}
           className="flex flex-col sm:flex-row gap-4 mb-8"
         >
-          {suggestions.map((suggestion, index) => {
+          {suggestions.map((suggestion) => {
             const Icon = suggestion.icon;
             return (
               <Link key={suggestion.href} href={suggestion.href}>

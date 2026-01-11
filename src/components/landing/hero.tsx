@@ -256,11 +256,11 @@ export function Hero(): React.ReactElement {
                       <div className="h-4 w-16 rounded bg-muted/50" />
                     </div>
                     <div className="space-y-2 pt-4">
-                      {[1, 2, 3, 4, 5].map((i) => (
+                      {[85, 70, 90, 75, 80].map((width, i) => (
                         <div 
                           key={i} 
-                          className={`h-8 rounded-lg ${i === 1 ? 'bg-emerald-500/20' : 'bg-muted/40'}`} 
-                          style={{ width: `${70 + Math.random() * 30}%` }} 
+                          className={`h-8 rounded-lg ${i === 0 ? 'bg-emerald-500/20' : 'bg-muted/40'}`} 
+                          style={{ width: `${width}%` }} 
                         />
                       ))}
                     </div>

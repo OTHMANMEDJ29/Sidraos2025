@@ -4,6 +4,7 @@
 // ═══════════════════════════════════════════════════════════════════════════════
 
 import type { Metadata } from 'next';
+import Link from 'next/link';
 
 export const metadata: Metadata = {
   title: 'Terms of Service',
@@ -145,7 +146,7 @@ export default function TermsOfServicePage(): React.ReactElement {
           and a description of the issue. Refund requests are reviewed on a case-by-case basis.
         </p>
         <p>
-          For more details, please see our <a href="/legal/refund">Refund Policy</a>.
+          For more details, please see our <Link href="/legal/refund">Refund Policy</Link>.
         </p>
       </section>
 

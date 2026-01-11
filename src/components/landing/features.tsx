@@ -89,10 +89,8 @@ const itemVariants: Variants = {
 
 function FeatureCard({
   feature,
-  index,
 }: {
   feature: typeof features[0];
-  index: number;
 }) {
   const t = useTranslations('landing.features');
   const locale = useLocale();
@@ -236,8 +234,8 @@ export function Features() {
           animate={isInView ? 'visible' : 'hidden'}
           className="grid gap-8 md:grid-cols-2 lg:grid-cols-3"
         >
-          {features.map((feature, index) => (
-            <FeatureCard key={feature.id} feature={feature} index={index} />
+          {features.map((feature) => (
+            <FeatureCard key={feature.id} feature={feature} />
           ))}
         </motion.div>
 

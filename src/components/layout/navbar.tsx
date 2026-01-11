@@ -5,7 +5,7 @@
 
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useSyncExternalStore } from 'react';
 import { useTranslations, useLocale } from 'next-intl';
 import { usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -25,22 +25,26 @@ const navLinks = [
   { href: '/pricing', labelKey: 'pricing' },
 ] as const;
 
+// Hydration-safe hook using useSyncExternalStore
+const emptySubscribe = (): (() => void) => () => {};
+const getSnapshot = (): boolean => true;
+const getServerSnapshot = (): boolean => false;
+
 export function Navbar(): React.ReactElement {
   const t = useTranslations('nav');
   const tAuth = useTranslations('auth');
   const locale = useLocale();
   const pathname = usePathname();
   const { theme, setTheme } = useTheme();
-  const [mounted, setMounted] = useState(false);
+  
+  // Use useSyncExternalStore for hydration-safe mounted state
+  const mounted = useSyncExternalStore(emptySubscribe, getSnapshot, getServerSnapshot);
+  
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [prevPathname, setPrevPathname] = useState(pathname);
 
-  // Handle hydration
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  // Handle scroll effect
+  // Handle scroll effect - setState in callback is fine
   useEffect(() => {
     const handleScroll = (): void => {
       setIsScrolled(window.scrollY > 20);
@@ -50,10 +54,13 @@ export function Navbar(): React.ReactElement {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Close mobile menu on route change
-  useEffect(() => {
-    setIsMobileMenuOpen(false);
-  }, [pathname]);
+  // Close mobile menu on route change - using derived state pattern
+  if (pathname !== prevPathname) {
+    setPrevPathname(pathname);
+    if (isMobileMenuOpen) {
+      setIsMobileMenuOpen(false);
+    }
+  }
 
   const toggleTheme = (): void => {
     setTheme(theme === 'dark' ? 'light' : 'dark');
