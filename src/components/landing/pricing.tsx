@@ -7,8 +7,11 @@
 
 import { useRef } from 'react';
 import { useLocale } from 'next-intl';
-import { motion, useInView } from 'framer-motion';
+import { motion, useInView, type Variants } from 'framer-motion';
 import { Check, Sparkles, Zap } from 'lucide-react';
+
+// Custom cubic bezier easing for smooth animations
+const customEase = [0.22, 1, 0.36, 1] as const;
 import { Button } from '@/components/ui/button';
 import { Link } from '@/i18n/routing';
 import { cn } from '@/lib/utils';
@@ -77,7 +80,7 @@ const plans = [
   },
 ];
 
-const containerVariants = {
+const containerVariants: Variants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
@@ -88,14 +91,14 @@ const containerVariants = {
   },
 };
 
-const cardVariants = {
+const cardVariants: Variants = {
   hidden: { opacity: 0, y: 40 },
   visible: {
     opacity: 1,
     y: 0,
     transition: {
       duration: 0.8,
-      ease: [0.22, 1, 0.36, 1],
+      ease: customEase,
     },
   },
 };
@@ -115,7 +118,7 @@ export function Pricing() {
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+          transition={{ duration: 0.8, ease: customEase }}
           className="mx-auto mb-16 max-w-2xl text-center"
         >
           <motion.span

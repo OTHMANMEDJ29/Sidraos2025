@@ -10,6 +10,9 @@ import { useTranslations, useLocale } from 'next-intl';
 import { usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, Moon, Sun, Globe } from 'lucide-react';
+
+// Custom cubic bezier easing for smooth animations
+const customEase = [0.22, 1, 0.36, 1] as const;
 import { useTheme } from 'next-themes';
 
 import { Button } from '@/components/ui/button';
@@ -67,7 +70,7 @@ export function Navbar(): React.ReactElement {
       <motion.header
         initial={{ y: -100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+        transition={{ duration: 0.6, ease: customEase }}
         className={cn(
           'fixed inset-x-0 top-0 z-50 px-4 py-4 transition-all duration-500',
           isScrolled ? 'py-2' : 'py-4'
