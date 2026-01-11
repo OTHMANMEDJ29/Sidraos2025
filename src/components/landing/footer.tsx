@@ -37,10 +37,9 @@ export function Footer(): React.ReactElement {
       { label: t('footer.community'), href: `/${locale}/community` },
     ],
     legal: [
-      { label: t('legal.termsOfService'), href: `/${locale}/terms` },
-      { label: t('legal.privacyPolicy'), href: `/${locale}/privacy` },
-      { label: t('legal.refundPolicy'), href: `/${locale}/refund` },
-      { label: t('legal.cookiePolicy'), href: `/${locale}/cookies` },
+      { label: t('legal.termsOfService'), href: '/legal/terms' },
+      { label: t('legal.privacyPolicy'), href: '/legal/privacy' },
+      { label: t('legal.refundPolicy'), href: '/legal/refund' },
     ],
     support: [
       { label: t('footer.support'), href: `/${locale}/support` },
